@@ -68,8 +68,6 @@ api.route('/leaderboard')
                 // For all of the results
                 results.forEach(element => {
 
-                    console.log(`${element}`)
-
                     // Create an item to put in the array
                     var item = {
                         play_id: element['play_id'],
