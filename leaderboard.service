@@ -1,0 +1,10 @@
+[Unit]
+Description=Leaderboard API
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/node /var/PuzzleGameAPI/index.js
+Restart=always
