@@ -87,6 +87,7 @@ api.route('/leaderboard')
                     embeds: [
                         {
                             "title": "GET /leaderboard",
+                            "timestamp": Date.now().toISOString(),
                             "color": 15258703,
                             "thumbnail": {
                                 "url": "https://i.imgur.com/Oh8FLLT.jpg",
