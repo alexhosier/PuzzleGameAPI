@@ -1,10 +1,8 @@
 // The requirements
-require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
 const mysql = require('mysql')
-const util = require('util')
-const res = require('express/lib/response')
+const config = require('./config.json')
 
 // Create the API
 const api = express()
@@ -13,10 +11,10 @@ api.use(bodyParser.json())
 // Create a connection to the DB
 var connection = mysql.createPool({
     connectionLimit: 10,
-    host: process.env.HOST,
-    user: process.env.USER,
-    password: process.env.PASS,
-    database: process.env.DATA,
+    host: config.host,
+    user: config.user,
+    password: config.pass,
+    database: config.data,
     port: 3306
 })
 
@@ -95,8 +93,8 @@ api.route('/leaderboard')
     })
 
 // Tell the API to listen on port 8080
-api.listen(process.env.PORT, () => {
+api.listen(config.port, () => {
 
-    console.log(`The API is running on port ${process.env.PORT}`)
+    console.log(`The API is running on port ${config.port}`)
 
 })
