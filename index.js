@@ -3,7 +3,7 @@ const config = require('./config.json')
 const express = require('express')
 const bodyParser = require('body-parser')
 const mysql = require('mysql')
-const fetch = require('node-fetch')
+const fetch = import('node-fetch')
 
 // Create the API
 const api = express()
