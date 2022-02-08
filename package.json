@@ -4,7 +4,7 @@
   "description": "A leaderboard API for Unity Project",
   "main": "index.js",
   "scripts": {
-    "start": "node ."
+    "start": "node index.js"
   },
   "author": "Alex Hosier",
   "license": "ISC",

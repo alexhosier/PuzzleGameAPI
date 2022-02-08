@@ -17,3 +17,6 @@ jobs:
       
       - name: Run NPM Install
         run: npm i
+
+      - name: Restart the Service
+        run: systemctl restart leaderboardapi.service
