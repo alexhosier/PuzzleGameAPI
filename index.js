@@ -93,9 +93,19 @@ api.route('/leaderboard')
                             },
                             "fields": [
                                 {
-                                    "name": "Your fields here",
-                                    "value": "Whatever you wish to send",
-                                    "inline": true
+                                    "name": "API Key",
+                                    "value": apikey,
+                                    "inline": false
+                                },
+                                {
+                                    "name": "route",
+                                    "value": "/leaderboard",
+                                    "inline": false
+                                },
+                                {
+                                    "name": "type",
+                                    "value": "GET",
+                                    "inline": false
                                 }
                             ]
                         }
