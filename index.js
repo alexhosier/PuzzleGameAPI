@@ -87,14 +87,14 @@ api.route('/leaderboard')
                 var params = {
                     username: "Puzzle Game Bot",
                     avatar_url: "https://i.imgur.com/Oh8FLLT.jpg",
-                    author: {
-                        name: "Bob"
-                    },
                     embeds: [
                         {
                             "title": "GET /leaderboard",
                             "timestamp": timestamp,
                             "color": 15258703,
+                            "thumbnail": {
+                                "url": "https://i.imgur.com/Oh8FLLT.jpg",
+                            },
                             "fields": [
                                 {
                                     "name": "API Key",
