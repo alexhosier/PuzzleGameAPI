@@ -12,10 +12,10 @@ api.use(bodyParser.json())
 // Create a connection to the DB
 var connection = mysql.createPool({
     connectionLimit: 10,
-    host: config.host,
-    user: config.user,
-    password: config.pass,
-    database: config.data,
+    host: config.mysql_host,
+    user: config.mysql_user,
+    password: config.mysql_pass,
+    database: config.mysql_data,
     port: 3306
 })
 
@@ -102,7 +102,7 @@ api.route('/leaderboard')
                     ]
                 }
                 
-                fetch('https://discord.com/api/webhooks/940674672054398977/CSYZ2q-cD52cAa8KQjSPEd0Yyvi6m0A2xYle8RYoWK65SAE_HdROIU0v9XXpTNoDbEfn', {
+                fetch(config.discord_webhook, {
                     method: "POST",
                     headers: {
                         'Content-type': 'application/json'
@@ -123,8 +123,8 @@ api.route('/leaderboard')
     })
 
 // Tell the API to listen on port 8080
-api.listen(config.port, () => {
+api.listen(config.api_port, () => {
 
-    console.log(`The API is running on port ${config.port}`)
+    console.log(`The API is running on port ${config.api_port}`)
 
 })
