@@ -83,52 +83,6 @@ api.route('/leaderboard')
 
                 });
 
-                // Create a new timestamp for the discord webhook
-                const d = new Date()
-                var timestamp = d.toISOString()
-
-                // Parameters for discord webhook
-                var params = {
-                    username: "Puzzle Game Bot",
-                    avatar_url: "https://i.imgur.com/Oh8FLLT.jpg",
-                    embeds: [
-                        {
-                            "title": "GET /leaderboard",
-                            "timestamp": timestamp,
-                            "color": 15258703,
-                            "thumbnail": {
-                                "url": "https://i.imgur.com/Oh8FLLT.jpg",
-                            },
-                            "fields": [
-                                {
-                                    "name": "API Key",
-                                    "value": apikey,
-                                    "inline": false
-                                },
-                                {
-                                    "name": "Route",
-                                    "value": "/leaderboard",
-                                    "inline": false
-                                },
-                                {
-                                    "name": "Type",
-                                    "value": "GET",
-                                    "inline": false
-                                }
-                            ]
-                        }
-                    ]
-                }
-                
-                // Send the wehook
-                fetch(config.discord_webhook, {
-                    method: "POST",
-                    headers: {
-                        'Content-type': 'application/json'
-                    },
-                    body: JSON.stringify(params)
-                })
-
                 // Log to the console, send the response
                 console.log(`A \u001b[34mGET \u001b[0mrequest was sent to /leadboard by ${apikey}`)
                 res.json({ plays })
@@ -177,7 +131,16 @@ api.route('/leaderboard')
                 return res.json({ "error_code": 400, "error_message": "There is an error with the info you provided!" })
             }
 
-            connection.query('INSERT INTO leaderboard')
+            // Insert data into the database
+            connection.query('INSERT INTO leaderboard (play_name, play_time) VALUES ("' + player_name + '", "' + player_time + '")', (error, results, fields) => {
+                if (error) throw error;
+            })
+
+
+            // Log to the console, send the response
+            console.log(`A \u001b[32mPOST \u001b[0mrequest was sent to /leadboard by ${apikey}`)
+            res.status(201)
+            res.json( req.body )
 
         })
 
