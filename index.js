@@ -1,10 +1,10 @@
 // The requirements
+require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
 const mysql = require('mysql')
 const util = require('util')
 const res = require('express/lib/response')
-require('dotenv').config()
 
 // Create the API
 const api = express()
