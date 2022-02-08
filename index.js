@@ -80,10 +80,11 @@ api.route('/leaderboard')
 
                 });
 
+                // Create a new timestamp for the discord webhook
                 const d = new Date()
                 var timestamp = d.toISOString()
 
-                // Log to the console and send the response
+                // Parameters for discord webhook
                 var params = {
                     username: "Puzzle Game Bot",
                     avatar_url: "https://i.imgur.com/Oh8FLLT.jpg",
@@ -116,6 +117,7 @@ api.route('/leaderboard')
                     ]
                 }
                 
+                // Send the wehook
                 fetch(config.discord_webhook, {
                     method: "POST",
                     headers: {
@@ -124,6 +126,7 @@ api.route('/leaderboard')
                     body: JSON.stringify(params)
                 })
 
+                // Log to the console, send the response
                 console.log(`A \u001b[34mGET \u001b[0mrequest was sent to /leadboard by ${apikey}`)
                 res.json({ plays })
 
@@ -139,6 +142,7 @@ api.route('/leaderboard')
 // Tell the API to listen on port 8080
 api.listen(config.api_port, () => {
 
+    // Log to the console that API is running
     console.log(`The API is running on port ${config.api_port}`)
 
 })
