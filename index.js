@@ -71,8 +71,9 @@ api.route('/leaderboard')
 
                     // Create an item to put in the array
                     var item = {
-                        play_playername: element['player_name'],
-                        play_playtime: element['player_time']
+                        play_id: element['play_id'],
+                        play_playername: element['play_name'],
+                        play_playtime: element['play_time']
                     }
 
                     // Add the item to the array
@@ -173,6 +174,8 @@ api.route('/leaderboard')
                 res.status(400)
                 return res.json({ "error_code": 400, "error_message": "There is an error with the info you provided!" })
             }
+
+            connection.query('INSERT INTO leaderboard')
 
         })
 
