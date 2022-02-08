@@ -137,6 +137,41 @@ api.route('/leaderboard')
     })
     .post((req,res) => {
 
+        // Get the API key from the request
+        var apikey = req.get('x-api-key')
+
+        // Check the API key exists
+        if (apikey == null) {
+            res.status(400)
+            return res.json({ "error_code": 400, "error_message": "No API key was provided" })
+        }
+
+        // Query the DB for the key
+        connection.query('SELECT * FROM apikeys WHERE apikey="' + apikey + '"', async (error, results, fields) => {
+
+            // Throw the error if there is an error
+            if (error) throw error
+
+            // Wait for the results
+            await results
+
+            // Check if the API key exists
+            if (results[0] == null) {
+
+                // Send back the error and its code
+                res.status(401)
+                return res.json({ "error_code": 401, "error_message": "An invalid API key was provided!" })
+
+            }
+            
+            // Get the variables from the body of the request
+            var player_name = req.body['player_name']
+            var player_time = req.body['player_time']
+
+            
+
+        })
+
     })
 
 // Tell the API to listen on port 8080
