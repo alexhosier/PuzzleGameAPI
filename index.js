@@ -3,6 +3,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const mysql = require('mysql')
 const util = require('util')
+const res = require('express/lib/response')
 require('dotenv').config()
 
 // Create the API
@@ -16,6 +17,10 @@ var connection = mysql.createPool({
     user: process.env.USER,
     password: process.env.PASS,
     database: process.env.DATA
+})
+
+api.get('/', (req, res) => {
+    res.json({ "api_name": "Puzzle Game API", "api_version": "1.0.0" })
 })
 
 // Set route for /leaderboard
