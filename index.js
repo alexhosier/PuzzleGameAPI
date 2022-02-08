@@ -94,8 +94,8 @@ api.route('/leaderboard')
     })
 
 // Tell the API to listen on port 8080
-api.listen(8080, () => {
+api.listen(process.env.PORT, () => {
 
-    console.log(`The API is running on port 8080`)
+    console.log(`The API is running on port ${process.env.PORT}`)
 
 })
