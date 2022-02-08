@@ -1,8 +1,9 @@
 // The requirements
+const config = require('./config.json')
 const express = require('express')
 const bodyParser = require('body-parser')
 const mysql = require('mysql')
-const config = require('./config.json')
+const fetch = require('node-fetch')
 
 // Create the API
 const api = express()
@@ -80,6 +81,35 @@ api.route('/leaderboard')
                 });
 
                 // Log to the console and send the response
+                var params = {
+                    username: "Puzzle Game Bot",
+                    avatar_url: "",
+                    embeds: [
+                        {
+                            "title": "API Call",
+                            "color": 15258703,
+                            "thumbnail": {
+                                "url": "",
+                            },
+                            "fields": [
+                                {
+                                    "name": "Your fields here",
+                                    "value": "Whatever you wish to send",
+                                    "inline": true
+                                }
+                            ]
+                        }
+                    ]
+                }
+                
+                fetch('https://discord.com/api/webhooks/940674672054398977/CSYZ2q-cD52cAa8KQjSPEd0Yyvi6m0A2xYle8RYoWK65SAE_HdROIU0v9XXpTNoDbEfn', {
+                    method: "POST",
+                    headers: {
+                        'Content-type': 'application/json'
+                    },
+                    body: JSON.stringify(params)
+                })
+
                 console.log(`A \u001b[34mGET \u001b[0mrequest was sent to /leadboard by ${apikey}`)
                 res.json({ plays })
 
