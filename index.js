@@ -168,7 +168,11 @@ api.route('/leaderboard')
             var player_name = req.body['player_name']
             var player_time = req.body['player_time']
 
-            
+            // Check if the correct details are here
+            if (player_name == null || player_time == null) {
+                res.status(400)
+                return res.json({ "error_code": 400, "error_message": "There is an error with the info you provided!" })
+            }
 
         })
 
