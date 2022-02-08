@@ -16,7 +16,8 @@ var connection = mysql.createPool({
     host: process.env.HOST,
     user: process.env.USER,
     password: process.env.PASS,
-    database: process.env.DATA
+    database: process.env.DATA,
+    port: 3306
 })
 
 api.get('/', (req, res) => {
