@@ -89,7 +89,7 @@ api.route('/leaderboard')
                             "title": "API Call",
                             "color": 15258703,
                             "thumbnail": {
-                                "url": "",
+                                "url": "https://i.imgur.com/Oh8FLLT.jpg",
                             },
                             "fields": [
                                 {
@@ -98,12 +98,12 @@ api.route('/leaderboard')
                                     "inline": false
                                 },
                                 {
-                                    "name": "route",
+                                    "name": "Route",
                                     "value": "/leaderboard",
                                     "inline": false
                                 },
                                 {
-                                    "name": "type",
+                                    "name": "Type",
                                     "value": "GET",
                                     "inline": false
                                 }
