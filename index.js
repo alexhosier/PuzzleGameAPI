@@ -80,6 +80,9 @@ api.route('/leaderboard')
 
                 });
 
+                const d = new Date()
+                var timestamp = d.toISOString()
+
                 // Log to the console and send the response
                 var params = {
                     username: "Puzzle Game Bot",
@@ -87,7 +90,7 @@ api.route('/leaderboard')
                     embeds: [
                         {
                             "title": "GET /leaderboard",
-                            "timestamp": Date,
+                            "timestamp": timestamp,
                             "color": 15258703,
                             "thumbnail": {
                                 "url": "https://i.imgur.com/Oh8FLLT.jpg",
