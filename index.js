@@ -180,7 +180,7 @@ api.route('/leaderboard')
 
                 // Log to the console, send the response
                 console.log(`A \u001b[31mDELETE \u001b[0mrequest was sent to /leadboard by ${apikey}`)
-                res.status(200)
+                res.status(204)
                 res.json( req.body )
             })
 
