@@ -23,7 +23,7 @@ jobs:
       - name: Create config file
         run: |
           touch config.json
-          echo { 'mysql_host': ${{ github.MYSQL_HOST }}, 'mysql_user': ${{ github.MYSQL_USER}}, "mysql_pass": ${{ github.MYSQL_PASS }}, "mysql_data": ${{ github.MYSQL_DATA }}, "api_port": ${{ github.PORT }} } >> config.json
+          echo { \"mysql_host\": ${{ github.MYSQL_HOST }}, \"mysql_user\": ${{ github.MYSQL_USER}}, "mysql_pass": ${{ github.MYSQL_PASS }}, "mysql_data": ${{ github.MYSQL_DATA }}, "api_port": ${{ github.PORT }} } >> config.json
 
       # Runs a single command using the runners shell
       - name: Install NPM modules
