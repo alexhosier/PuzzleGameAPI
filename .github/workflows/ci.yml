@@ -23,3 +23,6 @@ jobs:
       # Runs a single command using the runners shell
       - name: Install NPM modules
         run: npm i
+        
+      - name: Restart system service
+        run: sudo systemctl restart leaderboard
