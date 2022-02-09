@@ -128,14 +128,6 @@ api.route('/leaderboard')
                 return res.json({ "error_code": 400, "error_message": "[PC1] There is an error with the info you provided!" })
             }
 
-            console.log(player_name + " " + player_time)
-
-            // Check if the player time is eqaul to zero
-            if (player_time == 0 || "0") {
-                res.status(400)
-                return res.json({ "error_code": 400, "error_messsage": "[PC2] There is an error with the info you provied!" })
-            }
-
             // Insert data into the database
             connection.query('INSERT INTO leaderboard (play_name, play_time) VALUES ("' + player_name + '", "' + player_time + '")', (error, results, fields) => {
                 if (error) throw error;
