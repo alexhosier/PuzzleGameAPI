@@ -119,8 +119,8 @@ api.route('/leaderboard')
             }
             
             // Get the variables from the body of the request
-            var player_name = req.body['player_name']
-            var player_time = req.body['player_time']
+            var player_name = req.body['play_name']
+            var player_time = req.body['play_time']
 
             // Check if the correct details are here
             if (player_name == null || player_time == null) {
@@ -144,6 +144,50 @@ api.route('/leaderboard')
             console.log(`A \u001b[32mPOST \u001b[0mrequest was sent to /leadboard by ${apikey}`)
             res.status(201)
             res.json( req.body )
+
+        })
+
+    })
+    .delete((req, res) => {
+
+        // Get the API key from the request
+        var apikey = req.get('x-api-key')
+
+        // Check the API key exists
+        if (apikey == null) {
+            res.status(400)
+            return res.json({ "error_code": 400, "error_message": "No API key was provided" })
+        }
+
+        // Query the DB for the key
+        connection.query('SELECT * FROM apikeys WHERE apikey="' + apikey +'"', (error, results, fields) => {
+
+            // If error throw error
+            if (error) throw error
+
+            // Check if the apikey is valid
+            if (results[0] == null) {
+                res.status(401)
+                return res.json({ "error_code": 401, "error_message": "An invalid API key was provided!" })
+            }
+
+            // Fetch the play_id from the body of the request
+            var play_id = req.body['play_id']
+
+            // Check if the play_id exists
+            if (play_id == null) {
+                res.status(400)
+                return res.json({ "error_code": 400, "error_message": "There is an error with the info you provided!" })
+            }
+
+            connection.query('DELETE FROM leaderboard WHERE play_id="' + play_id + '"', (error, results, fields) => {
+                if (error) throw error
+
+                // Log to the console, send the response
+                console.log(`A \u001b[31mDELETE \u001b[0mrequest was sent to /leadboard by ${apikey}`)
+                res.status(200)
+                res.json( req.body )
+            })
 
         })
 
