@@ -180,6 +180,7 @@ api.route('/leaderboard')
                 return res.json({ "error_code": 400, "error_message": "There is an error with the info you provided!" })
             }
 
+            // Query the DB to delete the play
             connection.query('DELETE FROM leaderboard WHERE play_id="' + play_id + '"', (error, results, fields) => {
                 if (error) throw error
 
