@@ -20,9 +20,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      - name: Create config file
+        run: |
+          touch config.json
+          echo { "mysql_host": ${{ github.MYSQL_HOST }}, "mysql_user": ${{ github.MYSQL_USER}}, "mysql_pass": ${{ github.MYSQL_PASS }}, "mysql_data": ${{ github.MYSQL_DATA }}, "api_port": ${{ github.PORT }} } >> config.json
+
       # Runs a single command using the runners shell
       - name: Install NPM modules
         run: npm i
-        
+          
       - name: Restart system service
         run: sudo systemctl restart leaderboard
