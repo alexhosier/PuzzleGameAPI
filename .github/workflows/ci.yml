@@ -30,5 +30,4 @@ jobs:
         run: npm i
           
       - name: Restart system service
-        needs: []
         run: sudo systemctl restart leaderboard
