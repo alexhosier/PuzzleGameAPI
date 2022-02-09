@@ -36,7 +36,7 @@ api.route('/leaderboard')
         // Check the API key exists
         if (apikey == null) {
             res.status(400)
-            return res.json({ "error_code": 400, "error_message": "[GA1] No API key was provided" })
+            return res.json({ "error_code": 400, "error_message": "No API key was provided" })
         }
 
         // Query the DB for the key
@@ -53,7 +53,7 @@ api.route('/leaderboard')
 
                 // Send back the error and its code
                 res.status(401)
-                return res.json({ "error_code": 401, "error_message": "[GA2] An invalid API key was provided!" })
+                return res.json({ "error_code": 401, "error_message": "An invalid API key was provided!" })
 
             }
 
@@ -118,7 +118,7 @@ api.route('/leaderboard')
 
                 // Send back the error and its code
                 res.status(401)
-                return res.json({ "error_code": 401, "error_message": "[PR1] An invalid API key was provided!" })
+                return res.json({ "error_code": 401, "error_message": "An invalid API key was provided!" })
 
             }
             
@@ -129,7 +129,7 @@ api.route('/leaderboard')
             // Check if the correct details are here
             if (player_name == null || player_time == null) {
                 res.status(400)
-                return res.json({ "error_code": 400, "error_message": "[PC1] There is an error with the info you provided!" })
+                return res.json({ "error_code": 400, "error_message": "There is an error with the info you provided!" })
             }
 
             // Insert data into the database
