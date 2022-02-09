@@ -18,8 +18,12 @@ var connection = mysql.createPool({
     port: 3306
 })
 
+// Get the root route
 api.get('/', (req, res) => {
+
+    // Respond with information regarding the API
     res.json({ "api_name": "Puzzle Game API", "api_version": "1.0.0" })
+    
 })
 
 // Set route for /leaderboard
