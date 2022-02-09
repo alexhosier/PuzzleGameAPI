@@ -23,11 +23,12 @@ jobs:
       - name: Create config file
         run: |
           touch config.json
-          echo { \"mysql_host\": ${{ secrets.MYSQL_HOST }}, \"mysql_user\": ${{ secrets.MYSQL_USER}}, \"mysql_pass\": ${{ secrets.MYSQL_PASS }}, \"mysql_data\": ${{ secrets.MYSQL_DATA }}, \"api_port\": ${{ secrets.PORT }} } >> config.json
+          echo { \"mysql_host\": \"${{ secrets.MYSQL_HOST }}\", \"mysql_user\": \"${{ secrets.MYSQL_USER}}\", \"mysql_pass\": \"${{ secrets.MYSQL_PASS }}\", \"mysql_data\": \"${{ secrets.MYSQL_DATA }}\", \"api_port\": ${{ secrets.PORT }} } >> config.json
 
       # Runs a single command using the runners shell
       - name: Install NPM modules
         run: npm i
           
       - name: Restart system service
+        needs: []
         run: sudo systemctl restart leaderboard
